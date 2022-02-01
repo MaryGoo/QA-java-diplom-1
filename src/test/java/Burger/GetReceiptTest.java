@@ -22,7 +22,7 @@ public class GetReceiptTest {
     Bun bun;
 
     @Mock
-    Ingredient ingredientOne;
+    Ingredient ingredient;
 
     @Before
     public void setUp() {
@@ -30,21 +30,19 @@ public class GetReceiptTest {
     }
 
     @Test
-    public void getReceiptOnlyBunsSuccess() {
+    public void getReceiptBunsAndTwoIngredientsSuccess() {
         burger.setBuns(bun);
+        burger.addIngredient(ingredient);
         Mockito.when(bun.getName()).thenReturn("Сежая булочка");
-        Mockito.when(burger.getPrice()).thenReturn(42F);
-        System.out.println(burger.getReceipt());
-    }
-
-    @Test
-    public void getReceiptBunsAndOneIngredientSuccess() {
-        burger.setBuns(bun);
-        burger.addIngredient(ingredientOne);
-        Mockito.when(bun.getName()).thenReturn("Сежая булочка");
-        Mockito.when(ingredientOne.getType()).thenReturn(FILLING);
-        Mockito.when(ingredientOne.getName()).thenReturn("ОгурчиК");
-        Mockito.when(burger.getPrice()).thenReturn(42F);
-        assertEquals("(==== Сежая булочка ====)\n= filling ОгурчиК =\n(==== Сежая булочка ====)\n\nPrice: 42,000000\n", burger.getReceipt());
+        Mockito.when(ingredient.getType()).thenReturn(FILLING);
+        Mockito.when(ingredient.getName()).thenReturn("ОгурчиК");
+        Mockito.when(burger.getPrice()).thenReturn(500f);
+        String actualReceipt  = burger.getReceipt();
+        StringBuilder expextedReceipt = new StringBuilder(String.format("(==== %s ====)%n", "Сежая булочка"));
+        expextedReceipt.append(String.format("= %s %s =%n", "filling","ОгурчиК"));
+        expextedReceipt.append(String.format("(==== %s ====)%n", "Сежая булочка"));
+        expextedReceipt.append(String.format("%nPrice: %f%n", 500.0));
+        //Assert
+        assertEquals("Рецепт не совпадает!", expextedReceipt.toString(),actualReceipt);
     }
 }
