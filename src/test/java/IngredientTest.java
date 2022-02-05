@@ -9,16 +9,16 @@ public class IngredientTest {
 
     @Test
     public void getNameIngredientSuccess() {
-        assertEquals("Что то", ingredient.getName());
+        assertEquals("Имя ингридиента не верное","Что то", ingredient.getName());
     }
 
     @Test
     public void getTypeIngredientSuccess() {
-        assertEquals(SAUCE, ingredient.getType());
+        assertEquals("Тип ингридиента не верный",SAUCE, ingredient.getType());
     }
 
     @Test
     public void getPriseBunSuccess() {
-        assertEquals(23, ingredient.getPrice(), 0);
+        assertEquals("Цена ингридиента не верная",23, ingredient.getPrice(), 0);
     }
 }

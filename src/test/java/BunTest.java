@@ -8,11 +8,11 @@ public class BunTest {
 
     @Test
     public void getNameBunSuccess(){
-        assertEquals( "Самая вкусная", bun.getName());
+        assertEquals( "Имя булочки не верное","Самая вкусная", bun.getName());
     }
 
     @Test
     public void getPriseBunSuccess(){
-        assertEquals(45,bun.getPrice(), 0);
+        assertEquals("Цена булочки не верная",45,bun.getPrice(), 0);
     }
 }

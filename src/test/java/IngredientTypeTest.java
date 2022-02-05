@@ -26,6 +26,6 @@ public class IngredientTypeTest {
     @Test
     public void getTypeIngredientSuccess() {
         Ingredient ingredient = new Ingredient(ingredientType, "Что то", 23);
-        assertEquals(ingredientType, ingredient.getType());
+        assertEquals("Тип ингридиента не верный", ingredientType, ingredient.getType());
     }
 }

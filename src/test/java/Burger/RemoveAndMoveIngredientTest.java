@@ -24,26 +24,22 @@ public class RemoveAndMoveIngredientTest {
 
     @Test
     public  void removeOneIngredientSuccess(){
-        assertEquals( 2, burger.ingredients.size());
         burger.removeIngredient(0);
-        assertEquals( 1, burger.ingredients.size());
-        assertEquals(ingredientTwo.name,burger.ingredients.get(0).name);
+        assertEquals("Количество ингридиентов в бургере не равно 1", 1, burger.ingredients.size());
+        assertEquals("В бургере осталсе не удаленным не тот ингридиент", ingredientTwo.name,burger.ingredients.get(0).name);
     }
 
     @Test
     public  void removeAllIngredientSuccess(){
-        assertEquals( 2, burger.ingredients.size());
         burger.removeIngredient(1);
         burger.removeIngredient(0);
-        assertEquals( 0, burger.ingredients.size());
+        assertEquals( "В бургере удалены не все ингридиенты", burger.ingredients.size());
     }
 
     @Test
     public  void moveIngredientSuccess(){
-        assertEquals(ingredient.name,burger.ingredients.get(0).name);
-        assertEquals(ingredientTwo.name,burger.ingredients.get(1).name);
         burger.moveIngredient(0,1);
-        assertEquals(ingredient.name,burger.ingredients.get(1).name);
-        assertEquals(ingredientTwo.name,burger.ingredients.get(0).name);
+        assertEquals("Ингридиенты остались на прежних местах",ingredient.name,burger.ingredients.get(1).name);
+        assertEquals("Ингридиенты остались на прежних местах", ingredientTwo.name,burger.ingredients.get(0).name);
     }
 }
